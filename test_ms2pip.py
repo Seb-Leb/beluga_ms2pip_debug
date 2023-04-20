@@ -74,16 +74,18 @@ def make_ms2pip_config_dict(options):
         )
     return ms2pip_config
 
-ms2pip = MS2PIP(
-    peprec_filename,
-    spec_file=mgf_filename,
-    params=make_ms2pip_config_dict(ms2pip_options),
-    num_cpu=4,
-    add_retention_time=False,
-    compute_correlations=False,
-    model_dir='/home/.ms2pip'
-)
-try:
-    ms2pip.run()
-finally:
-    ms2pip.cleanup()
+if __name__=="__main__":
+
+    ms2pip = MS2PIP(
+        peprec_filename,
+        spec_file=mgf_filename,
+        params=make_ms2pip_config_dict(ms2pip_options),
+        num_cpu=4,
+        add_retention_time=False,
+        compute_correlations=False,
+        model_dir='/home/.ms2pip'
+    )
+    try:
+        ms2pip.run()
+    finally:
+        ms2pip.cleanup()
